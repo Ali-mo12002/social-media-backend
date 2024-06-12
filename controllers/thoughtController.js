@@ -23,14 +23,30 @@ const getSpecificThought = async (req, res) => {
 };
 
 const createNewThought = async (req, res) => {
-  try {
-    const newThought = await Thought.create(req.body);
-    await User.findByIdAndUpdate(req.body.userId, { $push: { thoughts: newThought._id } });
-    res.json(newThought);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-};
+    try {
+      const { thoughtText, username, userId } = req.body;
+  
+      if (!thoughtText || !username || !userId) {
+        return res.status(400).json({ message: 'Thought text, username, and userId are required' });
+      }
+  
+      const newThought = await Thought.create({ thoughtText, username });
+  
+      const user = await User.findByIdAndUpdate(
+        userId,
+        { $push: { thoughts: newThought._id } },
+        { new: true }
+      );
+  
+      if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+  
+      res.status(201).json(newThought);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  };
 
 const updateThought = async (req, res) => {
   try {
