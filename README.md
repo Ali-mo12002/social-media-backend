@@ -2,6 +2,12 @@
 
 This is a RESTful API for a social network web application where users can share their thoughts, react to friends’ thoughts, and create a friend list. The API is built using Node.js, Express.js, MongoDB, and Mongoose.
 
+# Features
+- User Management (Create, Read, Update, Delete)
+- Thought Management (Create, Read, Update, Delete)
+- Friend Management (Add, Remove)
+- Reaction Management (Add, Remove)
+
 # Technologies Used
 
 - Node.js
