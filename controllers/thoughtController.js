@@ -71,7 +71,7 @@ const addNewReaction = async (req, res) => {
   }
 };
 
-const removeReaction = async (req, res) => {
+const removeThoughtReaction = async (req, res) => {
   try {
     const thought = await Thought.findById(req.params.thoughtId);
     if (!thought) {
@@ -85,4 +85,4 @@ const removeReaction = async (req, res) => {
   }
 };
 
-module.exports = { getAllThoughts, getSpecificThought, createNewThought, updateThought, deleteThought, addNewReaction, removeReaction };
+module.exports = { getAllThoughts, getSpecificThought, createNewThought, updateThought, deleteThought, addNewReaction, removeThoughtReaction };
