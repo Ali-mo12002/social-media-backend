@@ -17,7 +17,6 @@ const reactionSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now,
-    get: (timestamp) => new Date(timestamp).toLocaleString(),
   },
 },
 {
@@ -37,7 +36,6 @@ const ThoughtSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now,
-    get: (timestamp) => new Date(timestamp).toLocaleString(),
   },
   username: {
     type: String,
